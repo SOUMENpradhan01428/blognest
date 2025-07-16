@@ -73,7 +73,7 @@ const UpdateBlog = () => {
         try {
             setLoading(true)
             console.log(id);
-            const res = await axios.put(`https://blognest1.onrender.com/blog/${id}`, formData, {
+            const res = await axios.put(`https://blognest1.onrender.com/api/v1/blog/${id}`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 },
@@ -98,7 +98,7 @@ const UpdateBlog = () => {
         console.log("action", action);
 
         try {
-            const res = await axios.patch(`https://blognest1.onrender.com/blog/${id}`, {
+            const res = await axios.patch(`https://blognest1.onrender.com/api/v1/blog/${id}`, {
                 params: {
                     action
                 },
@@ -119,7 +119,7 @@ const UpdateBlog = () => {
 
     const deleteBlog = async () => {
         try {
-            const res = await axios.delete(`https://blognest1.onrender.com/blog/delete/${id}`, { withCredentials: true })
+            const res = await axios.delete(`https://blognest1.onrender.com/api/v1/blog/delete/${id}`, { withCredentials: true })
             if (res.data.success) {
                 const updatedBlogData = blog.filter((blogItem) => blogItem?._id !== id);
                 dispatch(setBlog(updatedBlogData))
